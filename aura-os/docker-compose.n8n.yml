@@ -1,0 +1,31 @@
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: aura-n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # Basic auth pour sécuriser n8n
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: "admin"
+      N8N_BASIC_AUTH_PASSWORD: "70589202"
+      # Hostname et URL
+      N8N_HOST: "localhost"
+      N8N_PORT: "5678"
+      N8N_PROTOCOL: "http"
+      # Webhook URL (utilisé pour les webhooks externes)
+      WEBHOOK_URL: "http://localhost:5678/"
+      # Generic timezone
+      GENERIC_TIMEZONE: "Europe/Paris"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - aura-os_default
+
+networks:
+  aura-os_default:
+    external: true
+
+volumes:
+  n8n_data:

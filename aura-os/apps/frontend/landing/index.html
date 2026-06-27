@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>AURA OS — Assistant d'Unification Raisonnée Africain</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Système d'exploitation IA, Automatisation d'entreprise, Agents IA, LLM, NestJS, Next.js" name="keywords">
+    <meta content="AURA OS — Le système d'exploitation alimenté par IA qui construit toute votre plateforme d'entreprise en quelques minutes. Entretien adaptatif, agents IA, tableaux de bord dynamiques et automatisation complète." name="description">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="AURA OS — Système d'exploitation IA pour entreprises">
+    <meta property="og:description" content="Décrivez votre entreprise en langage naturel. AURA OS construit votre plateforme complète en quelques minutes.">
+    <meta property="og:image" content="img/logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:image" content="img/logo.png">
+
+    <!-- Favicon -->
+    <link href="img/logo.png" rel="icon" type="image/png">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-xxl bg-dark p-0">
+
+        <!-- Spinner -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow" style="width: 3rem; height: 3rem; background: var(--gradient-primary);" role="status">
+                <span class="sr-only">Chargement...</span>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- VIEW: LANDING -->
+        <!-- ============================================ -->
+        <div id="view-landing" class="aura-view active">
+
+        <!-- ============================================ -->
+        <!-- NAVBAR & HERO -->
+        <!-- ============================================ -->
+        <div class="container-xxl position-relative p-0" id="home">
+            <nav class="navbar navbar-expand-lg navbar-dark px-4 px-lg-5 py-3 py-lg-0">
+                <a href="#" class="navbar-brand p-0">
+                    <img src="img/logo.png" alt="AURA OS" class="navbar-logo">
+                </a>
+                <button class="navbar-toggler rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="#home" class="nav-item nav-link active">Accueil</a>
+                        <a href="#features" class="nav-item nav-link">Fonctionnalités</a>
+                        <a href="#agents" class="nav-item nav-link">Agents IA</a>
+                        <a href="#overview" class="nav-item nav-link">Comment ça marche</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
+                    </div>
+                    <a href="#" class="btn btn-glow rounded-pill py-2 px-4 ms-3 d-none d-lg-block btn-commencer">Commencer</a>
+                </div>
+            </nav>
+
+            <!-- Hero -->
+            <div class="container-xxl hero-header-custom">
+                <div class="container">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <div class="animate-fade-in d-inline-flex align-items-center gap-2 px-4 py-2 rounded-pill mb-4" style="background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);">
+                                <i class="fas fa-bolt" style="color:var(--warning);font-size:0.85rem;"></i>
+                                <span class="small fw-medium" style="color:var(--accent-light);">Plateforme d'entreprise alimentée par IA</span>
+                            </div>
+                            <h1 class="text-white mb-4 animated slideInDown" style="font-size:3rem;line-height:1.15;">
+                                Toute votre plateforme d'entreprise,<br>
+                                <span class="text-gradient">construite par IA</span> en quelques minutes
+                            </h1>
+                            <p class="pb-3 animated slideInDown" style="color:var(--text-secondary);font-size:1.15rem;max-width:560px;line-height:1.7;">
+                                Décrivez votre entreprise en langage naturel. AURA OS vous interviewe, comprend vos besoins et génère une plateforme complète — tableau de bord personnalisé, agents IA, workflows et automatisations.
+                            </p>
+                            <div class="mt-4 d-flex flex-wrap gap-3 align-items-center">
+                                <a href="#" class="btn btn-glow rounded-pill px-5 py-3 fw-semibold btn-commencer">Commencer</a>
+                                <a href="#" class="btn btn-outline-light rounded-pill px-4 py-3 fw-semibold btn-login"><i class="fas fa-sign-in-alt me-2"></i>Se connecter</a>
+                            </div>
+                            <div class="d-flex align-items-center gap-4 mt-5">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex">
+                                        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);border:2px solid var(--surface-dark);margin-right:-10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">K</div>
+                                        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#8b5cf6,#a78bfa);border:2px solid var(--surface-dark);margin-right:-10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">N</div>
+                                        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#c084fc);border:2px solid var(--surface-dark);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;">D</div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white small mb-0"><strong>500+</strong> Entreprises créées</p>
+                                        <p style="color:var(--text-muted);font-size:0.75rem;margin:0;">★★★★★ 4,9/5</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <div class="hero-dashboard-mock animated zoomIn">
+                                <div class="mock-window rounded-4 overflow-hidden" style="background:var(--surface-card);border:1px solid rgba(139,92,246,0.2);box-shadow:0 25px 60px rgba(99,102,241,0.12);">
+                                    <div class="d-flex align-items-center gap-2 px-4 py-3" style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.04);">
+                                        <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></span>
+                                        <span style="width:10px;height:10px;border-radius:50%;background:#eab308;"></span>
+                                        <span style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></span>
+                                        <span class="ms-3" style="font-size:11px;color:var(--text-muted);">Tableau de bord AURA OS</span>
+                                    </div>
+                                    <div class="p-4">
+                                        <div class="d-flex gap-3 mb-3">
+                                            <div class="rounded-3 p-3 flex-grow-1" style="background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);">
+                                                <p style="color:var(--text-muted);font-size:0.75rem;margin-bottom:4px;">Agents actifs</p>
+                                                <p class="h5 mb-0" style="color:var(--text-primary);">8 en ligne</p>
+                                            </div>
+                                            <div class="rounded-3 p-3 flex-grow-1" style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.15);">
+                                                <p style="color:var(--text-muted);font-size:0.75rem;margin-bottom:4px;">Tâches aujourd'hui</p>
+                                                <p class="h5 mb-0" style="color:var(--text-primary);">142</p>
+                                            </div>
+                                        </div>
+                                        <div class="rounded-3 p-3 mb-3" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <span style="color:var(--text-secondary);font-size:0.85rem;">Traitement IA</span>
+                                                <span class="badge rounded-pill" style="background:rgba(34,197,94,0.15);color:var(--success);font-size:0.7rem;padding:3px 10px;">En direct</span>
+                                            </div>
+                                            <div class="progress" style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;">
+                                                <div class="progress-bar" style="width:78%;background:var(--gradient-primary);border-radius:3px;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2 flex-wrap">
+                                            <span class="badge rounded-pill px-3 py-1" style="background:rgba(99,102,241,0.12);color:#a78bfa;font-weight:500;font-size:11px;">CRM</span>
+                                            <span class="badge rounded-pill px-3 py-1" style="background:rgba(139,92,246,0.12);color:#c084fc;font-weight:500;font-size:11px;">Finance</span>
+                                            <span class="badge rounded-pill px-3 py-1" style="background:rgba(168,85,247,0.12);color:#d8b4fe;font-weight:500;font-size:11px;">Automatisation</span>
+                                            <span class="badge rounded-pill px-3 py-1" style="background:rgba(192,132,252,0.12);color:#e9d5ff;font-weight:500;font-size:11px;">Mémoire</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 text-center">
+                            <div class="hero-logo-wrapper">
+                                <img src="img/logo.png" alt="AURA OS" class="hero-logo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- FONCTIONNALITÉS -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-dark" id="features">
+            <div class="container">
+                <div class="mx-auto text-center mb-5" style="max-width:680px;">
+                    <span class="section-title-tag">Fonctionnalités</span>
+                    <h1 class="mb-3" style="color:var(--text-primary);">Tout ce qu'il faut pour piloter votre entreprise en automatique</h1>
+                    <p style="color:var(--text-secondary);">AURA OS combine agents IA, tableaux de bord dynamiques, automatisation de workflows et mémoire sémantique en une seule plateforme unifiée.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                            <h5>Entretien IA Adaptatif</h5>
+                            <p>Décrivez votre entreprise naturellement. le LLM pose des questions intelligentes, comprend votre contexte et construit automatiquement toute votre plateforme.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                            <h5>8 Agents IA</h5>
+                            <p>CEO, Marketing, Ventes, Finance, Support, Opérations, RH et Livraison — chacun avec des prompts dédiés, des KPI et des outils.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                            <h5>Tableau de Bord Dynamique</h5>
+                            <p>Votre tableau de bord est généré selon votre profil d'entreprise — modules, widgets, KPI et navigation, tout est adapté pour vous.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                            <h5>Automatisation n8n</h5>
+                            <p>Constructeur visuel de workflows avec 14+ intégrations. Automatisez le suivi des leads, la facturation, les campagnes marketing et plus encore.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-database"></i></div>
+                            <h5>Moteur Mémoire RAG</h5>
+                            <p>Uploadez documents, emails et données. La recherche sémantique par embeddings trouve exactement ce dont vous avez besoin, quand vous en avez besoin.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="feature-card">
+                            <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+                            <h5>Sécurité Entreprise</h5>
+                            <p>Authentification OTP, 2FA, protection anti-force brute, RBAC avec 5 rôles et 60+ permissions, journalisation d'audit et données chiffrées.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- AGENTS IA -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-card" id="agents">
+            <div class="container">
+                <div class="mx-auto text-center mb-5" style="max-width:680px;">
+                    <span class="section-title-tag">Agents IA</span>
+                    <h1 class="mb-3" style="color:var(--text-primary);">Votre Équipe IA, Toujours Active</h1>
+                    <p style="color:var(--text-secondary);">Chaque agent a une mission dédiée, des outils et des KPI. L'agent CEO coordonne l'ensemble.</p>
+                </div>
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(99,102,241,0.15);"><i class="fas fa-crown" style="color:#818cf8;"></i></div>
+                            <h6 style="color:var(--text-primary);">CEO</h6>
+                            <p class="small" style="color:var(--text-secondary);">Orchestrateur & Stratégie</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(236,72,153,0.15);"><i class="fas fa-bullhorn" style="color:#f472b6;"></i></div>
+                            <h6 style="color:var(--text-primary);">Marketing</h6>
+                            <p class="small" style="color:var(--text-secondary);">Campagnes & Contenu</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(34,197,94,0.15);"><i class="fas fa-handshake" style="color:#4ade80;"></i></div>
+                            <h6 style="color:var(--text-primary);">Ventes</h6>
+                            <p class="small" style="color:var(--text-secondary);">Leads & Conversion</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(234,179,8,0.15);"><i class="fas fa-coins" style="color:#facc15;"></i></div>
+                            <h6 style="color:var(--text-primary);">Finance</h6>
+                            <p class="small" style="color:var(--text-secondary);">Factures & Trésorerie</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(168,85,247,0.15);"><i class="fas fa-headset" style="color:#c084fc;"></i></div>
+                            <h6 style="color:var(--text-primary);">Support</h6>
+                            <p class="small" style="color:var(--text-secondary);">Tickets & Réponses</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(6,182,212,0.15);"><i class="fas fa-gears" style="color:#22d3ee;"></i></div>
+                            <h6 style="color:var(--text-primary);">Opérations</h6>
+                            <p class="small" style="color:var(--text-secondary);">Processus & Logistique</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(249,115,22,0.15);"><i class="fas fa-users" style="color:#fb923c;"></i></div>
+                            <h6 style="color:var(--text-primary);">RH</h6>
+                            <p class="small" style="color:var(--text-secondary);">Équipe & Talents</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.8s">
+                        <div class="agent-card text-center">
+                            <div class="agent-avatar mx-auto mb-3" style="background:rgba(16,185,129,0.15);"><i class="fas fa-truck-fast" style="color:#34d399;"></i></div>
+                            <h6 style="color:var(--text-primary);">Livraison</h6>
+                            <p class="small" style="color:var(--text-secondary);">Expédition & Exécution</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- À PROPOS -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-dark" id="about">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <span class="section-title-tag">À propos d'AURA OS</span>
+                        <h1 class="mb-4" style="color:var(--text-primary);">Le Premier Système d'Exploitation IA Conçu pour les Entreprises Africaines</h1>
+                        <p style="color:var(--text-secondary);line-height:1.8;">AURA OS (African Unified Reasoning Assistant) est une plateforme IA full-stack qui transforme la façon dont les entreprises opèrent. À partir d'une simple conversation, il génère une plateforme d'entreprise complète — sans coder.</p>
+                        <p style="color:var(--text-secondary);line-height:1.8;">Construit sur NestJS, Next.js, PostgreSQL, Redis et OpenRouter LLM, AURA OS offre des performances de niveau entreprise avec l'ingéniosité africaine. Que vous teniez une boutique à Ouagadougou ou une startup à Lagos, AURA OS s'adapte à votre échelle.</p>
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <h3>24+</h3>
+                                <p>Modules métier</p>
+                            </div>
+                            <div class="about-stat">
+                                <h3>8</h3>
+                                <p>Agents IA</p>
+                            </div>
+                            <div class="about-stat">
+                                <h3>14+</h3>
+                                <p>Intégrations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-image-wrapper">
+                            <img src="img/about.jpg" alt="Tableau de bord AURA OS">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- COMMENT ÇA MARCHE -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-card" id="overview">
+            <div class="container">
+                <div class="mx-auto text-center mb-5" style="max-width:680px;">
+                    <span class="section-title-tag">Comment ça marche</span>
+                    <h1 class="mb-3" style="color:var(--text-primary);">Trois Étapes vers Votre Plateforme IA</h1>
+                    <p style="color:var(--text-secondary);">Pas de code. Pas de configuration complexe. Décrivez simplement ce dont vous avez besoin.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h5>Parlez-nous de votre entreprise</h5>
+                            <p>Répondez à quelques questions adaptatives sur votre type d'entreprise, vos objectifs et vos besoins. L'intervieweur IA apprend tout ce qu'il a besoin de savoir.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h5>L'IA Construit Votre Plateforme</h5>
+                            <p>AURA OS génère votre tableau de bord personnalisé, crée les agents IA, configure les workflows et les automatisations — le tout en moins de 5 minutes.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h5>Lancez & Évoluez</h5>
+                            <p>Votre plateforme est en ligne. Connectez vos outils, invitez votre équipe et laissez l'IA gérer le reste. Surveillez tout depuis votre tableau de bord.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- STATISTIQUES -->
+        <!-- ============================================ -->
+        <div class="container-xxl my-6">
+            <div class="container">
+                <div class="stats-bar">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-cubes"></i></div>
+                                <div class="stat-number" data-toggle="counter-up">24</div>
+                                <div class="stat-label">Modules métier</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-robot"></i></div>
+                                <div class="stat-number" data-toggle="counter-up">8</div>
+                                <div class="stat-label">Agents IA</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-plug"></i></div>
+                                <div class="stat-number" data-toggle="counter-up">14</div>
+                                <div class="stat-label">Intégrations</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3">
+                            <div class="stat-item">
+                                <div class="stat-icon"><i class="fas fa-globe-africa"></i></div>
+                                <div class="stat-number" data-toggle="counter-up">54</div>
+                                <div class="stat-label">Pays africains</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- GRILLE DES MODULES -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-dark">
+            <div class="container">
+                <div class="mx-auto text-center mb-5" style="max-width:680px;">
+                    <span class="section-title-tag">Modules</span>
+                    <h1 class="mb-3" style="color:var(--text-primary);">24+ Modules, des Possibilités Infinies</h1>
+                    <p style="color:var(--text-secondary);">Chaque module est généré par IA et adapté à votre profil d'entreprise.</p>
+                </div>
+                <div class="row g-3 justify-content-center">
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-users"></i>CRM</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-coins"></i>Finance</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-boxes-stacked"></i>Stock</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-cash-register"></i>POS</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-truck"></i>Livraison</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-user-tie"></i>RH</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-bullhorn"></i>Marketing</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-cart-shopping"></i>E-commerce</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-cloud-sun"></i>Météo</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-seedling"></i>Agriculture</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-file-lines"></i>Documents</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-chart-pie"></i>Rapports</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-brain"></i>Mémoire (RAG)</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-graduation-cap"></i>Apprentissage</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-wand-magic-sparkles"></i>Scoring</span></div>
+                    <div class="col-auto"><span class="badge-module"><i class="fas fa-microphone"></i>Voix</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- CTA FINAL -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-dark" id="cta-final">
+            <div class="container">
+                <div class="mx-auto text-center" style="max-width:700px;">
+                    <div class="mb-4" style="width:90px;height:90px;border-radius:24px;background:var(--gradient-primary);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 40px rgba(99,102,241,0.3);">
+                        <i class="fas fa-rocket fa-2x" style="color:#fff;"></i>
+                    </div>
+                    <h1 class="mb-3" style="color:var(--text-primary);">Prêt à transformer votre entreprise ?</h1>
+                    <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:2.5rem;">Rejoignez les 500+ entreprises qui ont déjà construit leur plateforme avec AURA OS. Essai gratuit, sans carte bancaire, en moins de 5 minutes.</p>
+                    <a href="#" class="btn btn-glow rounded-pill px-5 py-3 fw-semibold btn-commencer" style="font-size:1.1rem;">Commencer</a>
+                    <div class="d-flex align-items-center justify-content-center gap-4 mt-4">
+                        <span style="color:var(--text-muted);font-size:0.8rem;"><i class="fas fa-check-circle me-1" style="color:var(--success);"></i> Gratuit à vie</span>
+                        <span style="color:var(--text-muted);font-size:0.8rem;"><i class="fas fa-check-circle me-1" style="color:var(--success);"></i> Sans code</span>
+                        <span style="color:var(--text-muted);font-size:0.8rem;"><i class="fas fa-check-circle me-1" style="color:var(--success);"></i> 5 minutes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- CONTACT -->
+        <!-- ============================================ -->
+        <div class="container-xxl py-6 section-card" id="contact">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <span class="section-title-tag">Contact</span>
+                        <h1 class="mb-3" style="color:var(--text-primary);">Construisons Votre Plateforme</h1>
+                        <p style="color:var(--text-secondary);line-height:1.8;">Prêt à transformer votre entreprise avec l'IA ? Contactez-nous et nous configurerons votre plateforme AURA OS.</p>
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0 btn-square rounded-3 me-3" style="background:rgba(99,102,241,0.1);">
+                                <i class="fas fa-envelope" style="color:var(--primary-light);"></i>
+                            </div>
+                            <div>
+                                <p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:2px;">Email</p>
+                                <h6 style="color:var(--text-primary);">hello@auraos.africa</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="flex-shrink-0 btn-square rounded-3 me-3" style="background:rgba(99,102,241,0.1);">
+                                <i class="fas fa-phone" style="color:var(--primary-light);"></i>
+                            </div>
+                            <div>
+                                <p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:2px;">WhatsApp</p>
+                                <h6 style="color:var(--text-primary);">+226 73 48 43 12</h6>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 btn-square rounded-3 me-3" style="background:rgba(99,102,241,0.1);">
+                                <i class="fas fa-location-dot" style="color:var(--primary-light);"></i>
+                            </div>
+                            <div>
+                                <p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:2px;">Adresse</p>
+                                <h6 style="color:var(--text-primary);">Ouagadougou, Burkina Faso</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="d-flex flex-column align-items-center justify-content-center h-100 text-center py-5">
+                            <div class="mb-4" style="width:80px;height:80px;border-radius:20px;background:rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-rocket fa-2x" style="color:var(--primary-light);"></i>
+                            </div>
+                            <h3 style="color:var(--text-primary);margin-bottom:1rem;">Prêt à commencer ?</h3>
+                            <p style="color:var(--text-secondary);max-width:360px;line-height:1.7;margin-bottom:2rem;">Rejoignez les 500+ entreprises qui ont déjà construit leur plateforme avec AURA OS. Essai gratuit, sans carte bancaire.</p>
+                            <a href="#" class="btn btn-glow rounded-pill px-5 py-3 fw-semibold btn-commencer">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End of view-landing -->
+        </div>
+
+        <!-- ============================================ -->
+        <!-- VIEW: LOADING -->
+        <!-- ============================================ -->
+        <div id="view-loading" class="aura-view">
+            <div class="loading-page">
+                <div class="loading-content">
+                    <!-- Logo -->
+                    <div class="loading-logo mb-5">
+                        <img src="img/logo.png" alt="AURA OS" class="loading-logo-img">
+                        <p style="color:var(--text-muted);font-size:0.85rem;margin-top:12px;">African Unified Reasoning Assistant</p>
+                    </div>
+
+                    <!-- Animated Orbs -->
+                    <div class="loading-orbs mb-5">
+                        <div class="loading-orb orb-1"></div>
+                        <div class="loading-orb orb-2"></div>
+                        <div class="loading-orb orb-3"></div>
+                        <div class="loading-orb orb-4"></div>
+                        <div class="loading-orb orb-5"></div>
+                    </div>
+
+                    <!-- Progress -->
+                    <div class="loading-progress mb-4">
+                        <div class="loading-progress-bar">
+                            <div id="loading-progress-bar" class="loading-progress-fill"></div>
+                        </div>
+                        <div class="loading-progress-info">
+                            <span id="loading-percent" class="loading-percent">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Status -->
+                    <p id="loading-status" class="loading-status">Initialisation...</p>
+
+                    <!-- Sub info -->
+                    <p class="loading-subinfo">
+                        <i class="fas fa-shield-halved me-1" style="color:var(--success);"></i>
+                        Connexion sécurisée
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- FOOTER -->
+        <!-- ============================================ -->
+        <div class="footer-custom">
+            <div class="container py-5 px-lg-5">
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-brand">
+                            <img src="img/logo.png" alt="AURA OS" class="footer-logo">
+                            <p class="mt-3">Assistant d'Unification Raisonnée Africain. Le système d'exploitation alimenté par IA pour les entreprises africaines modernes.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <p class="footer-title">Produit</p>
+                        <div class="footer-links">
+                        <a href="#">Fonctionnalités</a>
+                        <a href="#">Intégrations</a>
+                        <a href="#">Journal des modifications</a>
+                        <a href="#">FAQ</a>
+                    </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <p class="footer-title">Entreprise</p>
+                        <div class="footer-links">
+                            <a href="#">À propos</a>
+                            <a href="#">Blog</a>
+                            <a href="#">Carrières</a>
+                            <a href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <p class="footer-title">Légal</p>
+                        <div class="footer-links">
+                        <a href="#">Confidentialité</a>
+                        <a href="#">Conditions</a>
+                        <a href="#">Sécurité</a>
+                    </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <p class="footer-title">Réseaux</p>
+                        <div class="footer-social d-flex mt-3">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <p class="footer-title">Compte</p>
+                        <div class="footer-links">
+                            <a href="#" class="btn-login">Se connecter</a>
+                            <a href="#" class="btn-commencer">Créer un compte</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container px-lg-5">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                            <p>&copy; 2026 AURA OS. Tous droits réservés.</p>
+                        </div>
+                        <div class="col-md-6 text-center text-md-end">
+                            <p>Fait avec <i class="fas fa-heart" style="color:#ef4444;"></i> au Burkina Faso 🇧🇫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retour en haut -->
+        <a href="#" class="btn btn-lg btn-glow btn-lg-square back-to-top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

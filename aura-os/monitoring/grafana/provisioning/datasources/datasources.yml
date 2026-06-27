@@ -1,0 +1,38 @@
+apiVersion: 1
+
+datasources:
+  # ─── Prometheus ────────────────────────────────────────────
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: false
+    jsonData:
+      timeInterval: '15s'
+      httpMethod: POST
+
+  # ─── Loki (logs) ──────────────────────────────────────────
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://loki:3100
+    editable: false
+    jsonData:
+      maxLines: 1000
+
+  # ─── PostgreSQL (AURA OS data) ────────────────────────────
+  - name: AURA-PostgreSQL
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    database: ${DB_NAME:-aura_os}
+    user: ${DB_USERNAME:-aura}
+    editable: false
+    secureJsonData:
+      password: ${DB_PASSWORD:-aura_password}
+    jsonData:
+      sslmode: disable
+      maxOpenConns: 10
+      maxIdleConns: 5
+      connMaxLifetime: 14400

@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Docker volumes
+data/
+*.log
+
+# Temp
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Secrets
+*.pem
+*.key
+secrets/

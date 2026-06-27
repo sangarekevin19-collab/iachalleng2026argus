@@ -1,0 +1,182 @@
+version: '3.9'
+
+# ══════════════════════════════════════════════════════════════
+# AURA OS — Full Stack
+# Backend + Frontend + n8n + MinIO + PostgreSQL + Redis + ES
+# Monitoring via docker-compose.monitoring.yml
+# ══════════════════════════════════════════════════════════════
+
+services:
+  # ─── PostgreSQL ────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: aura-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-aura}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-aura_password}
+      POSTGRES_DB: ${DB_NAME:-aura_os}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infra/docker/01-init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-aura}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - aura-network
+
+  # ─── Redis ─────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    container_name: aura-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - aura-network
+
+  # ─── Elasticsearch ─────────────────────────────────────────
+  elasticsearch:
+    image: elasticsearch:8.15.0
+    container_name: aura-elasticsearch
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - aura-network
+
+  # ─── MinIO (S3-compatible storage) ─────────────────────────
+  minio:
+    image: minio/minio:latest
+    container_name: aura-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID:-auraadmin}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY:-aura_minio_2026}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - aura-network
+
+  # ─── AURA OS Backend (NestJS) ──────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    container_name: aura-backend
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: ${DB_USERNAME:-aura}
+      DB_PASSWORD: ${DB_PASSWORD:-aura_password}
+      DB_NAME: ${DB_NAME:-aura_os}
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      ELASTICSEARCH_NODE: http://elasticsearch:9200
+      S3_ENDPOINT: http://minio:9000
+      N8N_URL: http://n8n:5678
+      N8N_API_KEY: ${N8N_API_KEY:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - aura-network
+
+  # ─── AURA OS Frontend (Next.js) ────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+    container_name: aura-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:4000/api
+    depends_on:
+      - backend
+    networks:
+      - aura-network
+
+  # ─── n8n Automation Engine ─────────────────────────────────
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: aura-n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: ${N8N_BASIC_AUTH_PASSWORD:-aura_n8n_secure_2026}
+      N8N_HOST: n8n
+      N8N_PORT: "5678"
+      N8N_PROTOCOL: http
+      WEBHOOK_URL: http://localhost:5678/
+      GENERIC_TIMEZONE: Europe/Paris
+      N8N_CUSTOM_API_URL_KEY: ${N8N_API_KEY:-}
+      # Connexion AURA OS
+      AURA_BACKEND_URL: http://backend:4000
+    volumes:
+      - n8n_data:/home/node/.n8n
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5678/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - backend
+    networks:
+      - aura-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  elasticsearch_data:
+  minio_data:
+  n8n_data:
+
+networks:
+  aura-network:
+    name: aura-os_default
+    driver: bridge
